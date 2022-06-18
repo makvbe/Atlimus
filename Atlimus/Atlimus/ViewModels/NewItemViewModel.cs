@@ -9,7 +9,9 @@ namespace Atlimus.ViewModels
 {
     public class NewItemViewModel : BaseViewModel
     {
-        private string text;
+        private string type;
+        private double price;
+        private int quantity;
         private string description;
 
         public NewItemViewModel()
@@ -22,14 +24,26 @@ namespace Atlimus.ViewModels
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(text)
+            return !String.IsNullOrWhiteSpace(type)
                 && !String.IsNullOrWhiteSpace(description);
         }
 
-        public string Text
+        public string Type
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => type;
+            set => SetProperty(ref type, value);
+        }
+
+        public double Price
+        {
+            get => price;
+            set => SetProperty(ref price, value);
+        }
+
+        public int Quantity
+        {
+            get => quantity;
+            set => SetProperty(ref quantity, value);
         }
 
         public string Description
@@ -52,7 +66,9 @@ namespace Atlimus.ViewModels
             Item newItem = new Item()
             {
                 Id = Guid.NewGuid().ToString(),
-                Type = Text,
+                Type = Type,
+                Price = Price,
+                Quantity = Quantity,
                 Description = Description
             };
 
