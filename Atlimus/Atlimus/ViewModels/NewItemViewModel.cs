@@ -25,6 +25,7 @@ namespace Atlimus.ViewModels
         private bool ValidateSave()
         {
             return !String.IsNullOrWhiteSpace(type)
+                && !Double.Equals(price, 0)
                 && !String.IsNullOrWhiteSpace(description);
         }
 
